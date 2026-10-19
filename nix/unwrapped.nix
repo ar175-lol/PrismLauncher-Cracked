@@ -14,6 +14,7 @@
   stripJavaArchivesHook,
   tomlplusplus,
   zlib,
+  pkg-config,
   msaClientID ? null,
   libarchive,
 }:
