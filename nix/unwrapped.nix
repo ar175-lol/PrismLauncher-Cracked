@@ -3,9 +3,9 @@
   stdenv,
   cmake,
   cmark,
-  extra-cmake-modules,
   gamemode,
   jdk17,
+  jdk21,
   kdePackages,
   libnbtplusplus,
   ninja,
@@ -14,6 +14,7 @@
   stripJavaArchivesHook,
   tomlplusplus,
   zlib,
+  pkg-config,
   msaClientID ? null,
   libarchive,
 }:
@@ -64,8 +65,10 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     cmake
     ninja
-    extra-cmake-modules
+    kdePackages.extra-cmake-modules
     jdk17
+    jdk21
+    pkg-config
     stripJavaArchivesHook
   ];
 
