@@ -67,6 +67,7 @@ stdenv.mkDerivation {
     kdePackages.extra-cmake-modules
     jdk17
     jdk21
+    pkg-config
     stripJavaArchivesHook
   ];
 
