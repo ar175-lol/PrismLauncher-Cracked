@@ -9,12 +9,12 @@
   kdePackages,
   libnbtplusplus,
   ninja,
+  pkg-config,
   qrencode,
   self,
   stripJavaArchivesHook,
   tomlplusplus,
   zlib,
-  pkg-config,
   msaClientID ? null,
   libarchive,
 }:
@@ -36,6 +36,13 @@ let
       ]
     else
       "unknown";
+
+  # Remove once https://github.com/NixOS/nixpkgs/pull/518987 lands
+  extra-cmake-modules = kdePackages.extra-cmake-modules.overrideAttrs (prevAttrs: {
+    meta = prevAttrs.meta // {
+      platforms = lib.platforms.all;
+    };
+  });
 in
 
 stdenv.mkDerivation {
@@ -65,7 +72,7 @@ stdenv.mkDerivation {
   nativeBuildInputs = [
     cmake
     ninja
-    kdePackages.extra-cmake-modules
+    extra-cmake-modules
     jdk17
     jdk21
     pkg-config
